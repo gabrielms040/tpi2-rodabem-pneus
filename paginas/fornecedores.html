@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fornecedores - RodaBem Pneus</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="topo-conteudo">
+            <a class="marca" href="../index.html">RodaBem Pneus</a>
+            <span class="subtitulo">Sistema administrativo da loja</span>
+        </div>
+        <div class="faixa"></div>
+    </header>
+
+    <main class="container">
+        <nav class="navegacao">
+            <a href="../index.html">Voltar para o início</a>
+            <a href="clientes.html">Clientes</a>
+            <a href="veiculos.html">Veículos</a>
+            <a href="fornecedores.html" class="atual">Fornecedores</a>
+            <a href="pneus.html">Pneus</a>
+            <a href="vendas.html">Vendas</a>
+        </nav>
+
+        <h1>Cadastro de fornecedor</h1>
+        <p class="descricao">Distribuidoras e fabricantes de onde a loja compra os pneus. O sistema calcula a data prevista de entrega de um pedido feito hoje.</p>
+
+        <form id="form-fornecedor" class="formulario" novalidate>
+            <div class="campos">
+                <div class="campo">
+                    <label for="razao_social">Razão social</label>
+                    <input type="text" id="razao_social" name="razao_social" maxlength="120">
+                </div>
+                <div class="campo">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00">
+                </div>
+                <div class="campo">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" name="telefone" placeholder="(11) 3333-4444">
+                </div>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="campo">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade">
+                </div>
+                <div class="campo">
+                    <label for="uf">Estado</label>
+                    <select id="uf" name="uf">
+                        <option value="">Selecione</option>
+                        <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+                        <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                        <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+                        <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+                        <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                        <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+                        <option>SP</option><option>SE</option><option>TO</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="prazo_entrega">Prazo de entrega (dias úteis)</label>
+                    <input type="number" id="prazo_entrega" name="prazo_entrega" min="1" max="60">
+                </div>
+            </div>
+            <div class="acoes">
+                <button type="submit" class="botao-principal">Salvar fornecedor</button>
+                <button type="reset" class="botao-secundario">Limpar</button>
+            </div>
+        </form>
+
+        <div id="resultado" class="resultado"></div>
+    </main>
+
+    <script src="../js/comum.js"></script>
+    <script src="../js/fornecedores.js"></script>
+</body>
+</html>
