@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas - RodaBem Pneus</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="topo-conteudo">
+            <a class="marca" href="../index.html">RodaBem Pneus</a>
+            <span class="subtitulo">Sistema administrativo da loja</span>
+        </div>
+        <div class="faixa"></div>
+    </header>
+
+    <main class="container">
+        <nav class="navegacao">
+            <a href="../index.html">Voltar para o início</a>
+            <a href="clientes.html">Clientes</a>
+            <a href="veiculos.html">Veículos</a>
+            <a href="fornecedores.html">Fornecedores</a>
+            <a href="pneus.html">Pneus</a>
+            <a href="vendas.html" class="atual">Vendas</a>
+        </nav>
+
+        <h1>Registrar venda</h1>
+        <p class="descricao">Pagamento à vista (dinheiro ou Pix) tem 5% de desconto. Na compra de 4 pneus ou mais, a montagem sai grátis e o cliente ganha o alinhamento.</p>
+
+        <form id="form-venda" class="formulario" novalidate>
+            <div class="campos">
+                <div class="campo">
+                    <label for="cpf_cliente">CPF do cliente</label>
+                    <input type="text" id="cpf_cliente" name="cpf_cliente" placeholder="000.000.000-00">
+                </div>
+                <div class="campo">
+                    <label for="vendedor">Vendedor</label>
+                    <select id="vendedor" name="vendedor">
+                        <option value="">Selecione</option>
+                        <option value="1">Carlos Henrique</option>
+                        <option value="2">Juliana Martins</option>
+                        <option value="3">Rafael Souza</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label for="pneu">Pneu</label>
+                    <input type="text" id="pneu" name="pneu" placeholder="Ex.: Pirelli Cinturato P1 175/70R14">
+                </div>
+                <div class="campo">
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" id="quantidade" name="quantidade" min="1" max="20" step="1">
+                </div>
+                <div class="campo">
+                    <label for="preco_unitario">Preço unitário (R$)</label>
+                    <input type="text" id="preco_unitario" name="preco_unitario" placeholder="389,90">
+                </div>
+                <div class="campo">
+                    <label for="forma_pagamento">Forma de pagamento</label>
+                    <select id="forma_pagamento" name="forma_pagamento">
+                        <option value="">Selecione</option>
+                        <option value="dinheiro">Dinheiro</option>
+                        <option value="pix">Pix</option>
+                        <option value="debito">Cartão de débito</option>
+                        <option value="credito">Cartão de crédito</option>
+                    </select>
+                </div>
+                <div class="campo" id="bloco-parcelas" hidden>
+                    <label for="parcelas">Parcelas</label>
+                    <select id="parcelas" name="parcelas">
+                        <option value="1">1x</option><option value="2">2x</option>
+                        <option value="3">3x</option><option value="4">4x</option>
+                        <option value="5">5x</option><option value="6">6x</option>
+                        <option value="7">7x</option><option value="8">8x</option>
+                        <option value="9">9x</option><option value="10">10x</option>
+                    </select>
+                    <small>Até 6x sem juros. De 7x a 10x tem acréscimo de 5%.</small>
+                </div>
+                <div class="campo">
+                    <label class="campo-check">
+                        <input type="checkbox" id="montagem" name="montagem" value="sim">
+                        Incluir montagem e balanceamento
+                    </label>
+                </div>
+            </div>
+            <p id="previa" class="descricao"></p>
+            <div class="acoes">
+                <button type="submit" class="botao-principal">Registrar venda</button>
+                <button type="reset" class="botao-secundario">Limpar</button>
+            </div>
+        </form>
+
+        <div id="resultado" class="resultado"></div>
+    </main>
+
+    <script src="../js/comum.js"></script>
+    <script src="../js/vendas.js"></script>
+</body>
+</html>
