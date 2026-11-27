@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - RodaBem Pneus</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="topo-conteudo">
+            <a class="marca" href="../index.html">RodaBem Pneus</a>
+            <span class="subtitulo">Sistema administrativo da loja</span>
+        </div>
+        <div class="faixa"></div>
+    </header>
+
+    <main class="container">
+        <nav class="navegacao">
+            <a href="../index.html">Voltar para o início</a>
+            <a href="clientes.html">Clientes</a>
+            <a href="veiculos.html">Veículos</a>
+            <a href="fornecedores.html">Fornecedores</a>
+            <a href="pneus.html">Pneus</a>
+            <a href="vendedores.html">Vendedores</a>
+            <a href="vendas.html">Vendas</a>
+            <a href="usuarios.html" class="atual so-admin">Usuários</a>
+        </nav>
+
+        <h1>Usuários do sistema</h1>
+        <p class="descricao">São as pessoas que podem entrar no sistema. Somente o administrador acessa esta página. A senha fica guardada no banco criptografada.</p>
+
+        <p id="aviso-edicao" class="aviso-edicao" hidden></p>
+        <form id="form-usuario" class="formulario" novalidate>
+            <input type="hidden" id="id" name="id">
+            <div class="campos">
+                <div class="campo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" maxlength="100">
+                </div>
+                <div class="campo">
+                    <label for="login">Usuário</label>
+                    <input type="text" id="login" name="login" maxlength="30" autocomplete="off">
+                    <small>Usado para entrar. Letras, números, ponto ou sublinhado.</small>
+                </div>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" maxlength="120">
+                </div>
+                <div class="campo">
+                    <label for="perfil">Perfil</label>
+                    <select id="perfil" name="perfil">
+                        <option value="operador">Operador</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                    <small>Só o administrador cadastra usuários.</small>
+                </div>
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" autocomplete="new-password">
+                    <small id="dica-senha">Mínimo de 6 caracteres, com letras e números.</small>
+                </div>
+                <div class="campo">
+                    <label for="confirmar_senha">Confirmar senha</label>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" autocomplete="new-password">
+                </div>
+                <div class="campo">
+                    <label for="ativo">Situação</label>
+                    <select id="ativo" name="ativo">
+                        <option value="sim">Ativo</option>
+                        <option value="nao">Desativado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="acoes">
+                <button type="submit" class="botao-principal">Salvar usuário</button>
+                <button type="reset" class="botao-secundario">Limpar</button>
+            </div>
+        </form>
+
+        <div id="resultado" class="resultado"></div>
+
+        <section class="lista-registros">
+            <h2>Usuários cadastrados</h2>
+            <div id="lista">Carregando...</div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        Trabalho de Tecnologias para Internet II - Uniube - 2026
+    </footer>
+
+    <script src="../js/comum.js"></script>
+    <script src="../js/usuarios.js"></script>
+</body>
+</html>
