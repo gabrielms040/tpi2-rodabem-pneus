@@ -16,13 +16,13 @@ No Momento II o sistema passou a gravar tudo em banco de dados (PostgreSQL) e ga
 | Clientes | Gabriel | Cadastro de clientes, valida CPF e calcula a idade (mínimo 18 anos) |
 | Veículos | Gabriel | Cadastro do veículo do cliente, identifica o padrão da placa e calcula o diâmetro do pneu |
 | Fornecedores | Gabriel | Cadastro de fornecedores, valida CNPJ e calcula a data prevista de entrega |
-| Pneus | Lucas | Cadastro de pneus, calcula o preço de venda e converte os índices de carga e velocidade |
-| Vendas | Lucas | Registro de venda com descontos, montagem, parcelamento e brinde |
+| Pneus | Lucas | CRUD de pneus com fornecedor, calcula o preço de venda, converte os índices de carga e velocidade e não deixa cadastrar pneu repetido |
+| Vendas | Lucas | Registro de venda com cliente, vendedor e pneu do banco, descontos, montagem, parcelamento e brinde; baixa o estoque e cancelar a venda devolve os pneus |
 | Login | Gabriel | Confere usuário e senha no banco e guarda o usuário logado na sessão |
 | Usuários | Gabriel | CRUD de quem pode entrar no sistema (só o administrador acessa), senha criptografada |
 | Vendedores | Gabriel | CRUD dos vendedores, com comissão e total vendido no mês |
 
-Todos os cadastros têm listagem, inclusão, alteração e exclusão, e só funcionam depois do login.
+Todos os cadastros têm listagem, inclusão, alteração e exclusão, e só funcionam depois do login. A venda não é alterada: para corrigir, ela é cancelada (excluída) e registrada de novo.
 
 ## Como executar
 
