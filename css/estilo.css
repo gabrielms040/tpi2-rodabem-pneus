@@ -1,263 +1,100 @@
-/* cores usadas no sistema */
+/* ==============================================================
+   RodaBem Pneus - estilos
+   Organizado como um design system do Figma:
+   1. tokens (as "variables" do Figma): cores, espacos, raios, textos
+   2. componentes (os "components" do Figma): botao, campo, card,
+      tabela, alerta, navegacao
+   Os espacos seguem uma grade de 4 px (4, 8, 12, 16, 24, 32, 48),
+   como o auto layout do Figma.
+   ============================================================== */
+
+/* ---------- 1. tokens ---------- */
 :root {
-    --asfalto: #33373d;
-    --asfalto-claro: #4a4f57;
-    --faixa: #f2b705;
-    --fundo: #eceef1;
+    /* cores neutras */
+    --cinza-900: #111827;
+    --cinza-700: #374151;
+    --cinza-500: #6b7280;
+    --cinza-300: #d1d5db;
+    --cinza-200: #e5e7eb;
+    --cinza-100: #f3f4f6;
+    --cinza-50: #f9fafb;
     --branco: #ffffff;
-    --texto: #23262b;
-    --texto-suave: #5d636c;
-    --borda: #cfd3d9;
-    --verde: #2e7d4f;
-    --vermelho: #b3261e;
+
+    /* cor da marca */
+    --marca-600: #1f2937;
+    --marca-500: #374151;
+
+    /* cores de estado */
+    --sucesso-700: #166534;
+    --sucesso-50: #f0fdf4;
+    --sucesso-200: #bbf7d0;
+    --erro-700: #b91c1c;
+    --erro-50: #fef2f2;
+    --erro-200: #fecaca;
+    --aviso-800: #854d0e;
+    --aviso-50: #fefce8;
+    --aviso-200: #fef08a;
+
+    /* espacos (grade de 4 px) */
+    --espaco-1: 4px;
+    --espaco-2: 8px;
+    --espaco-3: 12px;
+    --espaco-4: 16px;
+    --espaco-6: 24px;
+    --espaco-8: 32px;
+    --espaco-12: 48px;
+
+    /* cantos arredondados */
+    --raio-p: 6px;
+    --raio-m: 8px;
+    --raio-g: 12px;
+
+    /* textos */
+    --fonte: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --texto-xs: 0.75rem;   /* 12 px */
+    --texto-s: 0.875rem;   /* 14 px */
+    --texto-m: 1rem;       /* 16 px */
+    --texto-l: 1.25rem;    /* 20 px */
+    --texto-xl: 1.5rem;    /* 24 px */
+
+    /* sombra (elevation) */
+    --sombra-1: 0 1px 2px rgba(17, 24, 39, 0.06);
+    --sombra-2: 0 4px 12px rgba(17, 24, 39, 0.08);
+
+    --largura-max: 1040px;
 }
 
+/* ---------- base ---------- */
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background: var(--fundo);
-    color: var(--texto);
+    font-family: var(--fonte);
+    font-size: var(--texto-m);
     line-height: 1.5;
-}
-
-/* cabecalho com a faixa amarela, lembrando uma estrada */
-.topo {
-    background: var(--asfalto);
-    color: var(--branco);
-}
-
-.topo-conteudo {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 18px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 6px 16px;
-}
-
-.marca {
-    color: var(--branco);
-    text-decoration: none;
-    font-size: 1.6rem;
-    font-weight: 700;
-}
-
-.subtitulo {
-    color: #c9ccd1;
-    font-size: 0.95rem;
-}
-
-.faixa {
-    height: 8px;
-    background: repeating-linear-gradient(90deg, var(--faixa) 0 48px, transparent 48px 80px);
-    background-color: var(--asfalto-claro);
-}
-
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 28px 20px 40px;
+    background: var(--cinza-50);
+    color: var(--cinza-900);
 }
 
 h1 {
-    font-size: 1.7rem;
-    margin: 0 0 6px;
-}
-
-.boas-vindas p,
-.descricao {
-    color: var(--texto-suave);
-    margin: 0 0 24px;
-}
-
-/* menu da pagina inicial */
-.menu-principal {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 14px;
-}
-
-.item-menu {
-    display: block;
-    background: var(--branco);
-    border-left: 6px solid var(--asfalto);
-    padding: 16px 18px;
-    text-decoration: none;
-    color: var(--texto);
-}
-
-.item-menu strong {
-    display: block;
-    font-size: 1.15rem;
-}
-
-.item-menu span {
-    color: var(--texto-suave);
-    font-size: 0.92rem;
-}
-
-.item-menu:hover {
-    border-left-color: var(--faixa);
-}
-
-.item-menu:focus-visible {
-    outline: 3px solid var(--faixa);
-}
-
-/* links das paginas internas */
-.navegacao {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 18px;
-    margin-bottom: 22px;
-    font-size: 0.95rem;
-}
-
-.navegacao a {
-    color: var(--asfalto);
-}
-
-.navegacao a.atual {
-    font-weight: 700;
-    text-decoration: none;
-}
-
-/* formularios */
-.formulario {
-    background: var(--branco);
-    padding: 22px;
-    border-top: 4px solid var(--asfalto);
-}
-
-.campos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px 20px;
-}
-
-.campo label {
-    display: block;
+    font-size: var(--texto-xl);
     font-weight: 600;
-    margin-bottom: 4px;
+    margin: 0 0 var(--espaco-1);
 }
 
-.campo small {
-    display: block;
-    color: var(--texto-suave);
-    font-size: 0.82rem;
-    margin-top: 3px;
-}
-
-.campo input,
-.campo select {
-    width: 100%;
-    padding: 9px 10px;
-    border: 1px solid var(--borda);
-    font: inherit;
-    background: var(--branco);
-}
-
-.campo input:focus,
-.campo select:focus {
-    outline: 3px solid var(--faixa);
-    border-color: var(--asfalto);
-}
-
-.campo .campo-check {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+h2 {
+    font-size: var(--texto-l);
     font-weight: 600;
-    margin-top: 30px;
+    margin: 0 0 var(--espaco-3);
 }
 
-.campo .campo-check input {
-    width: auto;
-}
-
-.acoes {
-    margin-top: 22px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-button {
-    font: inherit;
-    font-weight: 600;
-    padding: 10px 20px;
-    border: 2px solid var(--asfalto);
-    cursor: pointer;
-}
-
-.botao-principal {
-    background: var(--asfalto);
-    color: var(--branco);
-}
-
-.botao-principal:hover {
-    background: var(--asfalto-claro);
-}
-
-.botao-secundario {
-    background: var(--branco);
-    color: var(--asfalto);
-}
-
-button:focus-visible {
-    outline: 3px solid var(--faixa);
-    outline-offset: 2px;
-}
-
-/* caixa que mostra a resposta do PHP */
-.resultado {
-    margin-top: 20px;
-    padding: 14px 18px;
-    background: var(--branco);
-    border-left: 6px solid var(--borda);
-}
-
-.resultado:empty {
-    display: none;
-}
-
-.resultado.sucesso {
-    border-left-color: var(--verde);
-}
-
-.resultado.erro {
-    border-left-color: var(--vermelho);
-}
-
-.resultado h2 {
-    font-size: 1.1rem;
-    margin: 0 0 8px;
-}
-
-.resultado ul {
-    margin: 0;
-    padding-left: 20px;
-}
-
-.resultado table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.resultado td {
-    padding: 5px 8px;
-    border-bottom: 1px solid var(--fundo);
-    vertical-align: top;
-}
-
-.resultado td:first-child {
-    color: var(--texto-suave);
-    width: 45%;
+.descricao,
+.boas-vindas p {
+    color: var(--cinza-500);
+    font-size: var(--texto-s);
+    margin: 0 0 var(--espaco-6);
 }
 
 /* enquanto confere se o usuario fez login, o conteudo da pagina fica escondido */
@@ -265,127 +102,427 @@ html:not(.sessao-ok) body:not([data-publica]) main {
     visibility: hidden;
 }
 
-/* nome do usuario logado e botao de sair, no topo */
+/* ---------- componente: cabecalho ---------- */
+.topo {
+    background: var(--branco);
+    border-bottom: 1px solid var(--cinza-200);
+}
+
+.topo-conteudo {
+    max-width: var(--largura-max);
+    margin: 0 auto;
+    padding: var(--espaco-4) var(--espaco-6);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--espaco-2) var(--espaco-4);
+}
+
+.marca {
+    color: var(--cinza-900);
+    text-decoration: none;
+    font-size: var(--texto-l);
+    font-weight: 700;
+}
+
+.subtitulo {
+    color: var(--cinza-500);
+    font-size: var(--texto-s);
+}
+
 .usuario-logado {
     margin-left: auto;
     display: flex;
     align-items: center;
-    gap: 12px;
-    color: #c9ccd1;
-    font-size: 0.95rem;
+    gap: var(--espaco-3);
+    color: var(--cinza-700);
+    font-size: var(--texto-s);
 }
 
-.botao-sair {
-    padding: 4px 14px;
-    background: transparent;
+/* ---------- layout ---------- */
+.container {
+    max-width: var(--largura-max);
+    margin: 0 auto;
+    padding: var(--espaco-8) var(--espaco-6) var(--espaco-12);
+}
+
+/* ---------- componente: navegacao entre paginas ---------- */
+.navegacao {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-1);
+    margin-bottom: var(--espaco-8);
+    padding: var(--espaco-1);
+    background: var(--branco);
+    border: 1px solid var(--cinza-200);
+    border-radius: var(--raio-m);
+    width: fit-content;
+    max-width: 100%;
+}
+
+.navegacao a {
+    padding: var(--espaco-1) var(--espaco-3);
+    border-radius: var(--raio-p);
+    color: var(--cinza-700);
+    font-size: var(--texto-s);
+    text-decoration: none;
+}
+
+.navegacao a:hover {
+    background: var(--cinza-100);
+}
+
+.navegacao a.atual {
+    background: var(--marca-600);
     color: var(--branco);
-    border-color: var(--faixa);
+    font-weight: 600;
 }
 
+.navegacao a:focus-visible,
+.item-menu:focus-visible {
+    outline: 2px solid var(--marca-500);
+    outline-offset: 2px;
+}
+
+/* ---------- componente: card do menu inicial ---------- */
+.menu-principal {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--espaco-4);
+}
+
+.item-menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espaco-1);
+    padding: var(--espaco-6);
+    background: var(--branco);
+    border: 1px solid var(--cinza-200);
+    border-radius: var(--raio-g);
+    box-shadow: var(--sombra-1);
+    color: var(--cinza-900);
+    text-decoration: none;
+    transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.item-menu strong {
+    font-size: var(--texto-m);
+    font-weight: 600;
+}
+
+.item-menu span {
+    color: var(--cinza-500);
+    font-size: var(--texto-s);
+}
+
+.item-menu:hover {
+    border-color: var(--cinza-300);
+    box-shadow: var(--sombra-2);
+}
+
+/* ---------- componente: card de formulario ---------- */
+.formulario {
+    padding: var(--espaco-6);
+    background: var(--branco);
+    border: 1px solid var(--cinza-200);
+    border-radius: var(--raio-g);
+    box-shadow: var(--sombra-1);
+}
+
+.campos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--espaco-4) var(--espaco-6);
+}
+
+/* ---------- componente: campo ---------- */
+.campo label {
+    display: block;
+    margin-bottom: var(--espaco-1);
+    font-size: var(--texto-s);
+    font-weight: 500;
+    color: var(--cinza-700);
+}
+
+.campo small {
+    display: block;
+    margin-top: var(--espaco-1);
+    font-size: var(--texto-xs);
+    color: var(--cinza-500);
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    height: 40px;
+    padding: 0 var(--espaco-3);
+    font: inherit;
+    font-size: var(--texto-s);
+    color: var(--cinza-900);
+    background: var(--branco);
+    border: 1px solid var(--cinza-300);
+    border-radius: var(--raio-p);
+}
+
+.campo input::placeholder {
+    color: var(--cinza-500);
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: none;
+    border-color: var(--marca-500);
+    box-shadow: 0 0 0 3px rgba(55, 65, 81, 0.15);
+}
+
+.campo .campo-check {
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+    height: 40px;
+    margin-top: 22px;
+    font-size: var(--texto-s);
+}
+
+.campo .campo-check input {
+    width: 16px;
+    height: 16px;
+}
+
+/* ---------- componente: botao ---------- */
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-3);
+    margin-top: var(--espaco-6);
+}
+
+button {
+    height: 40px;
+    padding: 0 var(--espaco-4);
+    font: inherit;
+    font-size: var(--texto-s);
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: var(--raio-p);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--marca-500);
+    outline-offset: 2px;
+}
+
+/* variante: principal */
+.botao-principal {
+    background: var(--marca-600);
+    color: var(--branco);
+}
+
+.botao-principal:hover {
+    background: var(--marca-500);
+}
+
+/* variante: secundario */
+.botao-secundario,
+.botao-sair {
+    background: var(--branco);
+    color: var(--cinza-700);
+    border-color: var(--cinza-300);
+}
+
+.botao-secundario:hover,
 .botao-sair:hover {
-    background: var(--faixa);
-    color: var(--asfalto);
+    background: var(--cinza-100);
 }
 
-/* tela de login */
+/* variante: perigo */
+.botao-perigo {
+    background: var(--branco);
+    color: var(--erro-700);
+    border-color: var(--erro-200);
+}
+
+.botao-perigo:hover {
+    background: var(--erro-50);
+}
+
+/* tamanho: pequeno */
+.botao-pequeno,
+.botao-sair {
+    height: 32px;
+    padding: 0 var(--espaco-3);
+    font-size: var(--texto-xs);
+}
+
+/* ---------- componente: alerta (resposta do PHP e aviso de edicao) ---------- */
+.resultado,
+.aviso-edicao {
+    margin-top: var(--espaco-4);
+    padding: var(--espaco-4);
+    border: 1px solid var(--cinza-200);
+    border-radius: var(--raio-m);
+    background: var(--branco);
+    font-size: var(--texto-s);
+}
+
+.resultado:empty {
+    display: none;
+}
+
+.resultado h2 {
+    font-size: var(--texto-m);
+    margin: 0 0 var(--espaco-2);
+}
+
+.resultado.sucesso {
+    background: var(--sucesso-50);
+    border-color: var(--sucesso-200);
+}
+
+.resultado.sucesso h2 {
+    color: var(--sucesso-700);
+}
+
+.resultado.erro {
+    background: var(--erro-50);
+    border-color: var(--erro-200);
+}
+
+.resultado.erro h2,
+.resultado.erro li {
+    color: var(--erro-700);
+}
+
+.resultado ul {
+    margin: 0;
+    padding-left: var(--espaco-6);
+}
+
+.resultado table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.resultado td {
+    padding: var(--espaco-1) 0;
+    vertical-align: top;
+}
+
+.resultado td:first-child {
+    width: 45%;
+    padding-right: var(--espaco-4);
+    color: var(--cinza-500);
+}
+
+.aviso-edicao {
+    margin: 0 0 var(--espaco-4);
+    background: var(--aviso-50);
+    border-color: var(--aviso-200);
+    color: var(--aviso-800);
+    font-weight: 500;
+}
+
+/* ---------- componente: tabela de registros ---------- */
+.lista-registros {
+    margin-top: var(--espaco-12);
+}
+
+#lista {
+    overflow-x: auto;
+    background: var(--branco);
+    border: 1px solid var(--cinza-200);
+    border-radius: var(--raio-g);
+    box-shadow: var(--sombra-1);
+}
+
+#lista > p {
+    margin: 0;
+    padding: var(--espaco-6);
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--texto-s);
+}
+
+.tabela th {
+    padding: var(--espaco-3) var(--espaco-4);
+    background: var(--cinza-50);
+    border-bottom: 1px solid var(--cinza-200);
+    color: var(--cinza-500);
+    font-size: var(--texto-xs);
+    font-weight: 600;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.tabela td {
+    padding: var(--espaco-3) var(--espaco-4);
+    border-bottom: 1px solid var(--cinza-100);
+    vertical-align: middle;
+}
+
+.tabela tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela tbody tr:hover {
+    background: var(--cinza-50);
+}
+
+.acoes-linha {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.acoes-linha button + button {
+    margin-left: var(--espaco-2);
+}
+
+/* ---------- tela de login ---------- */
 .caixa-login {
     max-width: 400px;
-    margin: 30px auto 0;
+    margin: var(--espaco-8) auto 0;
 }
 
 .caixa-login .campos {
     grid-template-columns: 1fr;
 }
 
-/* aviso que aparece quando um registro esta sendo alterado */
-.aviso-edicao {
-    background: #fff6d6;
-    border-left: 6px solid var(--faixa);
-    padding: 10px 14px;
-    margin: 0 0 14px;
-    font-weight: 600;
-}
-
-/* tabela com os registros do banco */
-.lista-registros {
-    margin-top: 32px;
-}
-
-.lista-registros h2 {
-    font-size: 1.25rem;
-    margin: 0 0 10px;
-}
-
-#lista {
-    overflow-x: auto;
-}
-
-.tabela {
+.caixa-login .botao-principal {
     width: 100%;
-    border-collapse: collapse;
-    background: var(--branco);
-    font-size: 0.93rem;
 }
 
-.tabela th {
-    background: var(--asfalto);
-    color: var(--branco);
-    text-align: left;
-    padding: 8px 10px;
-    white-space: nowrap;
-}
-
-.tabela td {
-    padding: 8px 10px;
-    border-bottom: 1px solid var(--fundo);
-    vertical-align: middle;
-}
-
-.tabela tbody tr:hover {
-    background: #f7f8fa;
-}
-
-.acoes-linha {
-    white-space: nowrap;
-}
-
-.acoes-linha button + button {
-    margin-left: 6px;
-}
-
-.botao-pequeno {
-    padding: 4px 10px;
-    font-size: 0.85rem;
-}
-
-.botao-perigo {
-    background: var(--branco);
-    color: var(--vermelho);
-    border-color: var(--vermelho);
-}
-
-.botao-perigo:hover {
-    background: var(--vermelho);
-    color: var(--branco);
-}
-
+/* ---------- rodape ---------- */
 .rodape {
+    padding: var(--espaco-6);
     text-align: center;
-    color: var(--texto-suave);
-    font-size: 0.85rem;
-    padding: 20px;
+    color: var(--cinza-500);
+    font-size: var(--texto-xs);
 }
 
+/* ---------- celular ---------- */
 @media (max-width: 600px) {
-    .formulario {
-        padding: 16px;
+    .topo-conteudo,
+    .container {
+        padding-left: var(--espaco-4);
+        padding-right: var(--espaco-4);
     }
 
-    h1 {
-        font-size: 1.4rem;
+    .formulario {
+        padding: var(--espaco-4);
     }
 
     .usuario-logado {
         margin-left: 0;
+    }
+
+    h1 {
+        font-size: var(--texto-l);
     }
 }
