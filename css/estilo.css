@@ -20,9 +20,12 @@
     --cinza-50: #f9fafb;
     --branco: #ffffff;
 
-    /* cor da marca */
-    --marca-600: #1f2937;
-    --marca-500: #374151;
+    /* cor da marca: asfalto e faixa amarela de estrada */
+    --asfalto-900: #2b2f35;
+    --asfalto-700: #3d424a;
+    --faixa-400: #f5b800;
+    --marca-600: #2b2f35;
+    --marca-500: #3d424a;
 
     /* cores de estado */
     --sucesso-700: #166534;
@@ -104,8 +107,14 @@ html:not(.sessao-ok) body:not([data-publica]) main {
 
 /* ---------- componente: cabecalho ---------- */
 .topo {
-    background: var(--branco);
-    border-bottom: 1px solid var(--cinza-200);
+    background: var(--asfalto-900);
+}
+
+/* faixa tracejada de estrada embaixo do cabecalho (marca do sistema) */
+.faixa {
+    height: 6px;
+    background-color: var(--asfalto-700);
+    background-image: repeating-linear-gradient(90deg, var(--faixa-400) 0 40px, transparent 40px 64px);
 }
 
 .topo-conteudo {
@@ -119,14 +128,14 @@ html:not(.sessao-ok) body:not([data-publica]) main {
 }
 
 .marca {
-    color: var(--cinza-900);
+    color: var(--branco);
     text-decoration: none;
     font-size: var(--texto-l);
     font-weight: 700;
 }
 
 .subtitulo {
-    color: var(--cinza-500);
+    color: #b8bcc4;
     font-size: var(--texto-s);
 }
 
@@ -135,7 +144,7 @@ html:not(.sessao-ok) body:not([data-publica]) main {
     display: flex;
     align-items: center;
     gap: var(--espaco-3);
-    color: var(--cinza-700);
+    color: #d6d9de;
     font-size: var(--texto-s);
 }
 
@@ -173,9 +182,10 @@ html:not(.sessao-ok) body:not([data-publica]) main {
 }
 
 .navegacao a.atual {
-    background: var(--marca-600);
+    background: var(--asfalto-900);
     color: var(--branco);
     font-weight: 600;
+    box-shadow: inset 0 -3px 0 var(--faixa-400);
 }
 
 .navegacao a:focus-visible,
@@ -325,16 +335,26 @@ button:focus-visible {
 }
 
 /* variante: secundario */
-.botao-secundario,
-.botao-sair {
+.botao-secundario {
     background: var(--branco);
     color: var(--cinza-700);
     border-color: var(--cinza-300);
 }
 
-.botao-secundario:hover,
-.botao-sair:hover {
+.botao-secundario:hover {
     background: var(--cinza-100);
+}
+
+/* botao de sair, no cabecalho escuro */
+.botao-sair {
+    background: transparent;
+    color: var(--branco);
+    border-color: var(--faixa-400);
+}
+
+.botao-sair:hover {
+    background: var(--faixa-400);
+    color: var(--asfalto-900);
 }
 
 /* variante: perigo */
