@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - RodaBem Pneus</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body data-publica>
+    <header class="topo">
+        <div class="topo-conteudo">
+            <span class="marca">RodaBem Pneus</span>
+            <span class="subtitulo">Sistema administrativo da loja</span>
+        </div>
+        <div class="faixa"></div>
+    </header>
+
+    <main class="container">
+        <div class="caixa-login">
+            <h1>Entrar no sistema</h1>
+            <p class="descricao">Use o usuário e a senha cadastrados pelo administrador.</p>
+
+            <form id="form-login" class="formulario" novalidate>
+                <div class="campos">
+                    <div class="campo">
+                        <label for="login">Usuário</label>
+                        <input type="text" id="login" name="login" autocomplete="username" autofocus>
+                    </div>
+                    <div class="campo">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" autocomplete="current-password">
+                    </div>
+                </div>
+                <div class="acoes">
+                    <button type="submit" class="botao-principal">Entrar</button>
+                </div>
+            </form>
+
+            <div id="resultado" class="resultado"></div>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        Trabalho de Tecnologias para Internet II - Uniube - 2026
+    </footer>
+
+    <script src="js/comum.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

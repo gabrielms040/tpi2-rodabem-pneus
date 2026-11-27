@@ -260,6 +260,115 @@ button:focus-visible {
     width: 45%;
 }
 
+/* enquanto confere se o usuario fez login, o conteudo da pagina fica escondido */
+html:not(.sessao-ok) body:not([data-publica]) main {
+    visibility: hidden;
+}
+
+/* nome do usuario logado e botao de sair, no topo */
+.usuario-logado {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #c9ccd1;
+    font-size: 0.95rem;
+}
+
+.botao-sair {
+    padding: 4px 14px;
+    background: transparent;
+    color: var(--branco);
+    border-color: var(--faixa);
+}
+
+.botao-sair:hover {
+    background: var(--faixa);
+    color: var(--asfalto);
+}
+
+/* tela de login */
+.caixa-login {
+    max-width: 400px;
+    margin: 30px auto 0;
+}
+
+.caixa-login .campos {
+    grid-template-columns: 1fr;
+}
+
+/* aviso que aparece quando um registro esta sendo alterado */
+.aviso-edicao {
+    background: #fff6d6;
+    border-left: 6px solid var(--faixa);
+    padding: 10px 14px;
+    margin: 0 0 14px;
+    font-weight: 600;
+}
+
+/* tabela com os registros do banco */
+.lista-registros {
+    margin-top: 32px;
+}
+
+.lista-registros h2 {
+    font-size: 1.25rem;
+    margin: 0 0 10px;
+}
+
+#lista {
+    overflow-x: auto;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--branco);
+    font-size: 0.93rem;
+}
+
+.tabela th {
+    background: var(--asfalto);
+    color: var(--branco);
+    text-align: left;
+    padding: 8px 10px;
+    white-space: nowrap;
+}
+
+.tabela td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--fundo);
+    vertical-align: middle;
+}
+
+.tabela tbody tr:hover {
+    background: #f7f8fa;
+}
+
+.acoes-linha {
+    white-space: nowrap;
+}
+
+.acoes-linha button + button {
+    margin-left: 6px;
+}
+
+.botao-pequeno {
+    padding: 4px 10px;
+    font-size: 0.85rem;
+}
+
+.botao-perigo {
+    background: var(--branco);
+    color: var(--vermelho);
+    border-color: var(--vermelho);
+}
+
+.botao-perigo:hover {
+    background: var(--vermelho);
+    color: var(--branco);
+}
+
 .rodape {
     text-align: center;
     color: var(--texto-suave);
@@ -274,5 +383,9 @@ button:focus-visible {
 
     h1 {
         font-size: 1.4rem;
+    }
+
+    .usuario-logado {
+        margin-left: 0;
     }
 }
