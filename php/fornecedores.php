@@ -28,6 +28,12 @@ if ($acao === 'listar') {
     responder(true, 'Fornecedores cadastrados', [], $lista);
 }
 
+// usado pela tela de pneus para montar o select de fornecedores
+if ($acao === 'opcoes') {
+    $linhas = consultar('SELECT id, razao_social AS nome FROM fornecedores ORDER BY razao_social');
+    responder(true, 'Fornecedores', [], $linhas);
+}
+
 if ($acao === 'buscar') {
     $f = consultarUm('SELECT * FROM fornecedores WHERE id = ?', [idPedido()]);
     if ($f === null) {

@@ -30,7 +30,9 @@
         <h1>Cadastro de pneu no estoque</h1>
         <p class="descricao">O preço de venda é calculado a partir do custo e da margem de lucro. Os índices de carga e velocidade são convertidos em quilos e km/h.</p>
 
+        <p id="aviso-edicao" class="aviso-edicao" hidden></p>
         <form id="form-pneu" class="formulario" novalidate>
+            <input type="hidden" id="id" name="id">
             <div class="campos">
                 <div class="campo">
                     <label for="marca">Marca</label>
@@ -79,6 +81,13 @@
                     <label for="quantidade">Quantidade em estoque</label>
                     <input type="number" id="quantidade" name="quantidade" min="0" step="1">
                 </div>
+                <div class="campo">
+                    <label for="fornecedor_id">Fornecedor</label>
+                    <select id="fornecedor_id" name="fornecedor_id">
+                        <option value="">Não informado</option>
+                    </select>
+                    <small>Opcional.</small>
+                </div>
             </div>
             <p id="previa" class="descricao"></p>
             <div class="acoes">
@@ -88,6 +97,11 @@
         </form>
 
         <div id="resultado" class="resultado"></div>
+
+        <section class="lista-registros">
+            <h2>Pneus cadastrados</h2>
+            <div id="lista">Carregando...</div>
+        </section>
     </main>
 
     <script src="../js/comum.js"></script>

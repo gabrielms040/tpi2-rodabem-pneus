@@ -1,5 +1,13 @@
 // pagina de cadastro de pneus
-prepararFormulario('form-pneu', '../php/pneus.php');
+iniciarCadastro({
+    formulario: 'form-pneu',
+    php: '../php/pneus.php',
+    nome: 'pneu',
+    aoAlterar: atualizarPrevia
+});
+
+// fornecedores vem do banco
+carregarOpcoes('fornecedor_id', '../php/fornecedores.php?acao=opcoes');
 
 const campoMedida = document.getElementById('medida');
 campoMedida.addEventListener('input', function () {
