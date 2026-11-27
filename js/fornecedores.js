@@ -1,5 +1,5 @@
 // pagina de cadastro de fornecedores
-prepararFormulario('form-fornecedor', '../php/fornecedores.php');
+iniciarCadastro({ formulario: 'form-fornecedor', php: '../php/fornecedores.php', nome: 'fornecedor' });
 mascaraTelefone(document.getElementById('telefone'));
 
 // mascara do CNPJ: 00.000.000/0000-00

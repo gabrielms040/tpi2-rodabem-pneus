@@ -1,5 +1,5 @@
 // pagina de cadastro de veiculos
-prepararFormulario('form-veiculo', '../php/veiculos.php');
+iniciarCadastro({ formulario: 'form-veiculo', php: '../php/veiculos.php', nome: 'veículo' });
 mascaraCpf(document.getElementById('cpf_dono'));
 
 // deixa a placa e a medida sempre em letra maiuscula enquanto digita

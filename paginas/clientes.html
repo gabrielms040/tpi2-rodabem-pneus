@@ -22,13 +22,17 @@
             <a href="veiculos.html">Veículos</a>
             <a href="fornecedores.html">Fornecedores</a>
             <a href="pneus.html">Pneus</a>
+            <a href="vendedores.html">Vendedores</a>
             <a href="vendas.html">Vendas</a>
+            <a href="usuarios.html" class="so-admin">Usuários</a>
         </nav>
 
         <h1>Cadastro de cliente</h1>
         <p class="descricao">O cliente precisa ter 18 anos ou mais. O CPF é conferido pelos dígitos verificadores.</p>
 
+        <p id="aviso-edicao" class="aviso-edicao" hidden></p>
         <form id="form-cliente" class="formulario" novalidate>
+            <input type="hidden" id="id" name="id">
             <div class="campos">
                 <div class="campo">
                     <label for="nome">Nome completo</label>
@@ -62,6 +66,11 @@
         </form>
 
         <div id="resultado" class="resultado"></div>
+
+        <section class="lista-registros">
+            <h2>Clientes cadastrados</h2>
+            <div id="lista">Carregando...</div>
+        </section>
     </main>
 
     <script src="../js/comum.js"></script>

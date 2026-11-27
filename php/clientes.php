@@ -1,9 +1,61 @@
 <?php
-// recebe o cadastro de cliente enviado pelo JavaScript
-require_once 'validacoes.php';
+// cadastro de clientes: listar, buscar, salvar (incluir ou alterar) e excluir
+require_once 'sessao.php';
+
+exigirLogin();
+
+$acao = acaoPedida();
+
+// lista todos os clientes para a tabela da tela
+if ($acao === 'listar') {
+    $linhas = consultar(
+        'SELECT c.id, c.nome, c.cpf, c.data_nascimento, c.telefone, c.cidade,
+                (SELECT COUNT(*) FROM veiculos v WHERE v.cliente_id = c.id) AS veiculos
+           FROM clientes c
+          ORDER BY c.nome'
+    );
+
+    $lista = [];
+    foreach ($linhas as $c) {
+        $idade = (new DateTime($c['data_nascimento']))->diff(new DateTime())->y;
+        $lista[] = [
+            'id' => $c['id'],
+            'Nome' => $c['nome'],
+            'CPF' => formatarCpf($c['cpf']),
+            'Idade' => "$idade anos",
+            'Telefone' => formatarTelefone($c['telefone']),
+            'Cidade' => $c['cidade'],
+            'Veículos' => $c['veiculos']
+        ];
+    }
+    responder(true, 'Clientes cadastrados', [], $lista);
+}
+
+// devolve um cliente para preencher o formulario na hora de alterar
+if ($acao === 'buscar') {
+    $c = consultarUm('SELECT * FROM clientes WHERE id = ?', [idPedido()]);
+    if ($c === null) {
+        responder(false, 'Cliente não encontrado.', ['O cliente pode ter sido excluído.']);
+    }
+    responder(true, 'Cliente encontrado.', [], [
+        'id' => $c['id'],
+        'nome' => $c['nome'],
+        'cpf' => formatarCpf($c['cpf']),
+        'data_nascimento' => $c['data_nascimento'],
+        'telefone' => formatarTelefone($c['telefone']),
+        'email' => $c['email'],
+        'cidade' => $c['cidade']
+    ]);
+}
 
 aceitarSomentePost();
 
+if ($acao === 'excluir') {
+    excluirRegistro('clientes', idPedido(), 'Este cliente tem veículos ou vendas cadastrados. Exclua esses registros antes.');
+}
+
+// a partir daqui: salvar o formulario
+$id = idPedido();
 $erros = [];
 
 verificarObrigatorios([
@@ -57,14 +109,50 @@ if ($nascimento !== '') {
     }
 }
 
+// o CPF nao pode estar em outro cliente (na alteracao, ignora o proprio cliente)
+if ($cpf !== '' && validarCpf($cpf)) {
+    $outro = consultarUm('SELECT nome FROM clientes WHERE cpf = ? AND id <> ?', [somenteNumeros($cpf), $id]);
+    if ($outro !== null) {
+        $erros[] = 'Este CPF já está cadastrado para ' . $outro['nome'] . '.';
+    }
+}
+
 if (count($erros) > 0) {
     responder(false, 'Não foi possível salvar o cliente.', $erros);
 }
 
 // deixa o nome com a primeira letra de cada palavra maiuscula
-$nomeFormatado = ucwords(strtolower($nome));
+$nomeFormatado = mb_convert_case(mb_strtolower($nome), MB_CASE_TITLE, 'UTF-8');
 
-responder(true, 'Cliente validado com sucesso.', [], [
+$valores = [
+    $nomeFormatado,
+    somenteNumeros($cpf),
+    $nascimento,
+    somenteNumeros($telefone),
+    strtolower($email),
+    $cidade
+];
+
+if ($id === 0) {
+    $id = inserir(
+        'INSERT INTO clientes (nome, cpf, data_nascimento, telefone, email, cidade) VALUES (?, ?, ?, ?, ?, ?)',
+        $valores
+    );
+    $mensagem = 'Cliente cadastrado com sucesso.';
+} else {
+    $valores[] = $id;
+    $alterados = executar(
+        'UPDATE clientes SET nome = ?, cpf = ?, data_nascimento = ?, telefone = ?, email = ?, cidade = ? WHERE id = ?',
+        $valores
+    );
+    if ($alterados === 0) {
+        responder(false, 'Não foi possível salvar o cliente.', ['Cliente não encontrado.']);
+    }
+    $mensagem = 'Cliente alterado com sucesso.';
+}
+
+responder(true, $mensagem, [], [
+    'Código' => $id,
     'Nome' => $nomeFormatado,
     'CPF' => formatarCpf($cpf),
     'Idade' => "$idade anos",

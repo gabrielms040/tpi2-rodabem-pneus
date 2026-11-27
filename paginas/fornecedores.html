@@ -22,13 +22,17 @@
             <a href="veiculos.html">Veículos</a>
             <a href="fornecedores.html" class="atual">Fornecedores</a>
             <a href="pneus.html">Pneus</a>
+            <a href="vendedores.html">Vendedores</a>
             <a href="vendas.html">Vendas</a>
+            <a href="usuarios.html" class="so-admin">Usuários</a>
         </nav>
 
         <h1>Cadastro de fornecedor</h1>
         <p class="descricao">Distribuidoras e fabricantes de onde a loja compra os pneus. O sistema calcula a data prevista de entrega de um pedido feito hoje.</p>
 
+        <p id="aviso-edicao" class="aviso-edicao" hidden></p>
         <form id="form-fornecedor" class="formulario" novalidate>
+            <input type="hidden" id="id" name="id">
             <div class="campos">
                 <div class="campo">
                     <label for="razao_social">Razão social</label>
@@ -75,6 +79,11 @@
         </form>
 
         <div id="resultado" class="resultado"></div>
+
+        <section class="lista-registros">
+            <h2>Fornecedores cadastrados</h2>
+            <div id="lista">Carregando...</div>
+        </section>
     </main>
 
     <script src="../js/comum.js"></script>
