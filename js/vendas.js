@@ -22,11 +22,17 @@ mascaraCpf(document.getElementById('cpf_cliente'));
 let pneus = {};
 
 // vendedores ativos vem do banco
-carregarOpcoes('vendedor', '../php/vendedores.php?acao=ativos');
+carregarOpcoes('vendedor', '../php/vendedores.php?acao=ativos').catch(console.log);
 
 // pneus com estoque vem do banco (recarrega depois de cada venda ou cancelamento)
 async function carregarPneus() {
-    const json = await chamarPhp('../php/pneus.php?acao=opcoes');
+    let json;
+    try {
+        json = await chamarPhp('../php/pneus.php?acao=opcoes');
+    } catch (erro) {
+        console.log(erro);
+        return;
+    }
     campoPneu.length = 1; // deixa so a opcao "Selecione"
     pneus = {};
     for (const item of json.dados) {

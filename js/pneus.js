@@ -7,7 +7,7 @@ iniciarCadastro({
 });
 
 // fornecedores vem do banco
-carregarOpcoes('fornecedor_id', '../php/fornecedores.php?acao=opcoes');
+carregarOpcoes('fornecedor_id', '../php/fornecedores.php?acao=opcoes').catch(console.log);
 
 const campoMedida = document.getElementById('medida');
 campoMedida.addEventListener('input', function () {
