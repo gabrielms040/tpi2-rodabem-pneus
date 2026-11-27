@@ -25,6 +25,26 @@ function aceitarSomentePost()
     }
 }
 
+// qual operacao o JavaScript pediu: listar, buscar, salvar ou excluir
+// (sem o parametro "acao" o padrao e salvar o formulario)
+function acaoPedida()
+{
+    if (isset($_REQUEST['acao'])) {
+        return $_REQUEST['acao'];
+    }
+    return 'salvar';
+}
+
+// id do registro que vem da tela (0 quando e um cadastro novo)
+function idPedido()
+{
+    $id = isset($_REQUEST['id']) ? trim($_REQUEST['id']) : '';
+    if (ctype_digit($id) && (int) $id > 0) {
+        return (int) $id;
+    }
+    return 0;
+}
+
 // pega um campo do $_POST sem espacos no comeco e no fim
 function campo($nome)
 {
