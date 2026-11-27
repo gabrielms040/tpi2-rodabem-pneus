@@ -28,7 +28,7 @@
         </nav>
 
         <h1>Registrar venda</h1>
-        <p class="descricao">Pagamento à vista (dinheiro ou Pix) tem 5% de desconto. Na compra de 4 pneus ou mais, a montagem sai grátis e o cliente ganha o alinhamento.</p>
+        <p class="descricao">Pagamento à vista (dinheiro ou Pix) tem 5% de desconto. Na compra de 4 pneus ou mais, a montagem sai grátis e o cliente ganha o alinhamento. O cliente precisa estar cadastrado.</p>
 
         <form id="form-venda" class="formulario" novalidate>
             <div class="campos">
@@ -40,14 +40,14 @@
                     <label for="vendedor">Vendedor</label>
                     <select id="vendedor" name="vendedor">
                         <option value="">Selecione</option>
-                        <option value="1">Carlos Henrique</option>
-                        <option value="2">Juliana Martins</option>
-                        <option value="3">Rafael Souza</option>
                     </select>
                 </div>
                 <div class="campo">
                     <label for="pneu">Pneu</label>
-                    <input type="text" id="pneu" name="pneu" placeholder="Ex.: Pirelli Cinturato P1 175/70R14">
+                    <select id="pneu" name="pneu">
+                        <option value="">Selecione</option>
+                    </select>
+                    <small>Só aparecem os pneus que têm estoque.</small>
                 </div>
                 <div class="campo">
                     <label for="quantidade">Quantidade</label>
@@ -55,7 +55,8 @@
                 </div>
                 <div class="campo">
                     <label for="preco_unitario">Preço unitário (R$)</label>
-                    <input type="text" id="preco_unitario" name="preco_unitario" placeholder="389,90">
+                    <input type="text" id="preco_unitario" readonly>
+                    <small>Vem do cadastro do pneu.</small>
                 </div>
                 <div class="campo">
                     <label for="forma_pagamento">Forma de pagamento</label>
@@ -93,6 +94,11 @@
         </form>
 
         <div id="resultado" class="resultado"></div>
+
+        <section class="lista-registros">
+            <h2>Vendas registradas</h2>
+            <div id="lista">Carregando...</div>
+        </section>
     </main>
 
     <script src="../js/comum.js"></script>
