@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendedores - RodaBem Pneus</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+    <header class="topo">
+        <div class="topo-conteudo">
+            <a class="marca" href="../index.html">RodaBem Pneus</a>
+            <span class="subtitulo">Sistema administrativo da loja</span>
+        </div>
+        <div class="faixa"></div>
+    </header>
+
+    <main class="container">
+        <nav class="navegacao">
+            <a href="../index.html">Voltar para o início</a>
+            <a href="clientes.html">Clientes</a>
+            <a href="veiculos.html">Veículos</a>
+            <a href="fornecedores.html">Fornecedores</a>
+            <a href="pneus.html">Pneus</a>
+            <a href="vendedores.html" class="atual">Vendedores</a>
+            <a href="vendas.html">Vendas</a>
+            <a href="usuarios.html" class="so-admin">Usuários</a>
+        </nav>
+
+        <h1>Cadastro de vendedor</h1>
+        <p class="descricao">A comissão vai de 0% a 15% sobre o total da venda. Vendedores inativos não aparecem na tela de vendas.</p>
+
+        <p id="aviso-edicao" class="aviso-edicao" hidden></p>
+        <form id="form-vendedor" class="formulario" novalidate>
+            <input type="hidden" id="id" name="id">
+            <div class="campos">
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" maxlength="100">
+                </div>
+                <div class="campo">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00">
+                </div>
+                <div class="campo">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" name="telefone" placeholder="(34) 99999-9999">
+                </div>
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" maxlength="120">
+                </div>
+                <div class="campo">
+                    <label for="comissao">Comissão (%)</label>
+                    <input type="text" id="comissao" name="comissao" placeholder="3,00">
+                </div>
+                <div class="campo">
+                    <label for="ativo">Situação</label>
+                    <select id="ativo" name="ativo">
+                        <option value="sim">Ativo</option>
+                        <option value="nao">Inativo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="acoes">
+                <button type="submit" class="botao-principal">Salvar vendedor</button>
+                <button type="reset" class="botao-secundario">Limpar</button>
+            </div>
+        </form>
+
+        <div id="resultado" class="resultado"></div>
+
+        <section class="lista-registros">
+            <h2>Vendedores cadastrados</h2>
+            <div id="lista">Carregando...</div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        Trabalho de Tecnologias para Internet II - Uniube - 2026
+    </footer>
+
+    <script src="../js/comum.js"></script>
+    <script src="../js/vendedores.js"></script>
+</body>
+</html>
